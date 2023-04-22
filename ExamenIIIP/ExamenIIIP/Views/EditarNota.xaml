@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenIIIP.Views.EditarNota"
+    NavigationPage.HasNavigationBar="False">
+
+    <AbsoluteLayout>
+        <Frame Padding="0" HeightRequest="200" WidthRequest="200" CornerRadius="100" HorizontalOptions="Center" IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="0.5,0.02,200,200" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="AddProductImage">
+            <Image x:Name="imgFoto"
+                       Source="https://i.ibb.co/tzqnRTG/camera.png"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center" 
+                       WidthRequest="300"
+                       HeightRequest="220" >
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                              NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+
+            </Image>
+        </Frame>
+        <StackLayout AbsoluteLayout.LayoutBounds="0.5,1.3,300,500" AbsoluteLayout.LayoutFlags="PositionProportional" Spacing="10">
+            <Entry Placeholder="Descripcion de la nota" PlaceholderColor="Black" FontAttributes="Bold" TextColor="#000" x:Name="DescripcionNotaText"></Entry>
+            <Label Text="Seleccione la fecha"/>
+            <DatePicker x:Name="FechaNotaText" MinimumDate="04/22/2023"/>
+            <Grid Margin="20,10,20,10">
+
+                <Label Text="Grabar nota de voz"
+                   TextColor="Black"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Column="0"
+                   x:Name="txtMessage"   
+                   FontSize="16"
+                   FontAttributes="Bold"
+                       />
+
+
+                <Button Text="Grabar" 
+                    x:Name="btnGrabar" 
+                    Margin="20,0,20,0"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="1"
+                    BorderWidth="3"
+                    BorderColor="Black"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    Clicked="btnGrabar_Clicked"/>
+
+            </Grid>
+
+
+        </StackLayout>
+        <Button AbsoluteLayout.LayoutBounds="0.5, 0.8, 250, 60" AbsoluteLayout.LayoutFlags="PositionProportional" Text="Actualizar" CornerRadius="10" BackgroundColor="Black" TextColor="{StaticResource colorFont}" x:Name="UpdateButton" Clicked="UpdateButton_Clicked"></Button>
+        <Button AbsoluteLayout.LayoutBounds="0.5, 0.9, 250, 60" AbsoluteLayout.LayoutFlags="PositionProportional" Text="Cancelar" CornerRadius="10" BackgroundColor="Black" TextColor="{StaticResource colorFont}" x:Name="CancelButton" Clicked="CancelButton_Clicked"></Button>
+    </AbsoluteLayout>
+</ContentPage>

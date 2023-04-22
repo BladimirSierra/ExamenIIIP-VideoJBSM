@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenIIIP.Views.Notas_List"
+             NavigationPage.HasNavigationBar="False">
+    <NavigationPage.TitleView>
+        <Frame IsClippedToBounds="True" BackgroundColor="Transparent">
+         </Frame>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout>
+        <StackLayout Padding="0, 0" BackgroundColor="White">
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="0">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <ListView Grid.Row="3" x:Name="NotasListView" ItemsSource="{Binding Notas}" HasUnevenRows="True" IsRefreshing="True" IsPullToRefreshEnabled="True" ItemTapped="NotasListView_ItemTapped" HeightRequest="730">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <SwipeView>
+                                            <StackLayout Margin="0, 0">
+                                                <Frame Margin="0, 0, 0, 0" BackgroundColor="black" BorderColor="Black" CornerRadius="5">
+                                                    <StackLayout  Orientation="Horizontal" Padding="0" Spacing="15">
+                                                        <Frame Padding="0" HeightRequest="0" WidthRequest="75" BackgroundColor="white" CornerRadius="10" BorderColor="black" IsClippedToBounds="True">
+                                                            <Frame.Content>
+                                                                <Image Source="{Binding PhotoSource}" Aspect="Fill"/>
+                                                            </Frame.Content>
+                                                        </Frame>
+
+                                                        <StackLayout HorizontalOptions="CenterAndExpand">
+                                                            <Label Text="{Binding Descripcion}" FontSize="12" TextColor="White" FontAttributes="Bold"/>
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                                <Label Text="{Binding Fecha}" TextColor="White" FontAttributes="Bold" FontSize="12"/>
+                                                            </StackLayout>
+                                                            
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </Frame>
+
+                                            </StackLayout>
+                                        </SwipeView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+
+        <Frame AbsoluteLayout.LayoutBounds="0,0, 370, 700" CornerRadius="0" x:Name="PopUpModal">
+            <ScrollView>
+                <AbsoluteLayout>
+                    <Image Source="regresar.png" Scale="0.6" AbsoluteLayout.LayoutBounds="0, 0, 35,35" AbsoluteLayout.LayoutFlags="PositionProportional" x:Name="ClosePopUpModal"></Image>
+                    <Frame Padding="0" HeightRequest="300" WidthRequest="300" CornerRadius="200" HorizontalOptions="Center" IsClippedToBounds="True" AbsoluteLayout.LayoutBounds="0.5,0.1,300,300" AbsoluteLayout.LayoutFlags="PositionProportional">
+                        <Image Source="https://i.ibb.co/vhh0Gkj/users.png" x:Name="ImageNota"></Image>
+                    </Frame>
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.59, 300,50" AbsoluteLayout.LayoutFlags="PositionProportional">
+                        <Label x:Name="DescripcionNota" Text="NoUserFounded" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" TextColor="{StaticResource colorBlack}"></Label>
+                        <Label x:Name="FechaNota" Text="SinFecha" HorizontalOptions="CenterAndExpand"/>
+                        <Label TextColor="White" x:Name="IdNota" Text="ID" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds="0.5, 0.95, 300,80" AbsoluteLayout.LayoutFlags="PositionProportional"></Label>
+                    </StackLayout>
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.73, 250,50" AbsoluteLayout.LayoutFlags="PositionProportional" Orientation="Vertical" Margin="10,10,10,10">
+                        <Button Text="Actualizar" x:Name="UpdateButton" Clicked="UpdateButton_Clicked" BackgroundColor="Black" TextColor="#fff" CornerRadius="10"></Button>
+                    </StackLayout>
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.83, 250,50" AbsoluteLayout.LayoutFlags="PositionProportional" Orientation="Vertical" Margin="10,10,10,10">
+                        <Button Text="Eliminar" x:Name="DeleteButton" Clicked="DeleteButton_Clicked" BackgroundColor="Black" CornerRadius="10" TextColor="#fff"></Button>
+                    </StackLayout>
+                </AbsoluteLayout>
+            </ScrollView>
+        </Frame>
+    </AbsoluteLayout>
+</ContentPage>
